@@ -1,8 +1,13 @@
 import React from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
 
 function Footer (props) {
   return (
-    <div>Footer</div>
+    <Container fluid>
+      <Row>
+        <Col>footer</Col>
+      </Row>
+    </Container>
   )
 }
 

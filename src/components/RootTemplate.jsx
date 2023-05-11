@@ -3,14 +3,15 @@ import { Outlet } from 'react-router-dom'
 
 import Header from './Header'
 import Footer from './Footer'
+import { Container } from 'react-bootstrap'
 
 function RootTemplate (props) {
   return (
-    <React.Fragment>
+    <Container style={{minHeight: '100vh'}}>
       <Header />
       <Outlet />
       <Footer />
-    </React.Fragment>
+    </Container>
   )
 }
 
