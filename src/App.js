@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.css'
 
 // routes
 
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootTemplate />,
     children: [
-      
+
     ]
   }
 ])
