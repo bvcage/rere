@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.css'
 
 // routes
+import Home from './routes/Home'
 
 // templates
 import RootTemplate from './components/RootTemplate'
@@ -11,7 +11,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootTemplate />,
     children: [
-
+      {
+        path: '/',
+        element: <Home />
+      }
     ]
   }
 ])
