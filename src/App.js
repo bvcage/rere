@@ -5,6 +5,7 @@ import Home from './routes/Home'
 
 // templates
 import RootTemplate from './components/RootTemplate'
+import About from './routes/About'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: 'about',
+        element: <About />
       }
     ]
   }
