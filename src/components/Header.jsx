@@ -13,13 +13,13 @@ function Header (props) {
           <Navbar.Brand>Re:RE</Navbar.Brand>
           <Navbar.Toggle aria-controls='header-navbar' />
           <Navbar.Collapse id='header-navbar'>
-            <Nav defaultActiveKey={'/'}>
-              <Nav.Link eventKey='/' onClick={()=>navigate('/')}>Home</Nav.Link>
-              <Nav.Link eventKey='about' onClick={()=>navigate('about')}>About</Nav.Link>
+            <Nav>
+              <Nav.Link onClick={()=>navigate('/')}>Home</Nav.Link>
+              <Nav.Link onClick={()=>navigate('about')}>About</Nav.Link>
             </Nav>
             <Nav className='ms-auto'>
-              <Nav.Link>Login</Nav.Link>
-              <Nav.Link>Sign Up</Nav.Link>
+              <Nav.Link onClick={()=>navigate('/account/login')}>Login</Nav.Link>
+              <Nav.Link onClick={()=>navigate('/account/signup')}>Sign Up</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

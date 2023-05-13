@@ -7,7 +7,7 @@ import { Container } from 'react-bootstrap'
 
 function RootTemplate (props) {
   return (
-    <Container style={{minHeight: '100vh'}}>
+    <Container style={{minHeight: '100vh', position: 'relative'}}>
       <Header />
       <Outlet />
       <Footer />
