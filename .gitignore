@@ -1,6 +1,9 @@
 test
 
 # firebase
+.firebase
+.firebaserc
+firebase.json
 firebaseConfig.js
 
 # dependencies
