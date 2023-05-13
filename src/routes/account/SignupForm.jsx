@@ -1,6 +1,15 @@
 import React from 'react'
-import { Button, Container, FloatingLabel, Form, Stack } from 'react-bootstrap'
 
+// React imports
+import { Button, Container, FloatingLabel, Form, Stack } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+
+// Firebase imports
+import { AUTH, DB } from '../../firebaseConfig.js'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
+
+// Misc globals
 const BLANK_USER = {
   'first': '',
   'last': '',
@@ -9,7 +18,9 @@ const BLANK_USER = {
   'password2': '',
 }
 
+
 function SignupForm (props) {
+  const navigate = useNavigate()
   const [signup, setSignup] = React.useState(BLANK_USER)
   const [validated, setValidated] = React.useState(false)
 
@@ -28,13 +39,23 @@ function SignupForm (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
-
-    console.log(/^(?=.*[*.!@$%^&(){}[\]:;<>,.?/~_+\-=|]).{8,32}$/.test(signup.password))
-
-    if (e.target.checkValidity()) {
-      console.log('form valid')
+    if (!validated) setValidated(true)
+    if (e.currentTarget.checkValidity()) {
+      createUserWithEmailAndPassword(AUTH, signup.email, signup.password)
+        .then(uCred => {
+          setDoc(doc(DB, 'users', uCred.user.uid), {
+            first: signup.first,
+            last: signup.last
+          })
+            .then(docRef => navigate('/'))
+            .catch(error => {
+              console.log(error)
+            })
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
-    setValidated(true)
   }
 
   return (
@@ -78,7 +99,7 @@ function SignupForm (props) {
             <Form.Control
               name='password'
               placeholder=' '
-              pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[\]:;<>,.?/~_+\-=|]).{8,32}$"
+              pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[\]:;<>,.?/~_+=|-]).{8,32}$"
               required
               type='password'
               value={signup.password}
@@ -90,7 +111,7 @@ function SignupForm (props) {
             <Form.Control
               name='password2'
               placeholder=' '
-              pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[\]:;<>,.?/~_+\-=|]).{8,32}$"
+              pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[\]:;<>,.?/~_+=|-]).{8,32}$"
               required
               type='password'
               value={signup.password2}

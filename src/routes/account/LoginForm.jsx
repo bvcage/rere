@@ -1,11 +1,17 @@
 import React from 'react'
 import { Button, Container, FloatingLabel, Form, Stack } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+
+import { AUTH } from '../../firebaseConfig'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const BLANK_LOGIN = {
   email: '',
   password: '',
 }
+
 function LoginForm (props) {
+  const navigate = useNavigate()
   const [login, setLogin] = React.useState(BLANK_LOGIN)
 
   function handleChange (e) {
@@ -14,8 +20,13 @@ function LoginForm (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
-    console.log(login)
+    signInWithEmailAndPassword(AUTH, login.email, login.password)
+      .then(uCred => navigate('/'))
+      .catch(error => {
+        console.log(error)
+      })
   }
+  
   return (
     <Container style={{maxWidth: 500}}>
       <Form onSubmit={handleSubmit}>

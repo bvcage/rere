@@ -8,6 +8,7 @@ import RootTemplate from './components/RootTemplate'
 import About from './routes/About'
 import Account from './routes/account/Account'
 import LoginForm from './routes/account/LoginForm'
+import Logout from './routes/account/Logout'
 import SignupForm from './routes/account/SignupForm'
 import UserProfile from './routes/account/UserProfile'
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
           {
             path: 'login',
             element: <LoginForm />
+          },
+          {
+            path: 'logout',
+            element: <Logout />
           },
           {
             path: 'signup',
