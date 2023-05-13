@@ -1,5 +1,8 @@
 test
 
+# firebase
+firebaseConfig.js
+
 # dependencies
 /node_modules
 /.pnp

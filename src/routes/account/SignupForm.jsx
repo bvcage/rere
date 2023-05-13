@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Col, Container, FloatingLabel, Form, Row, Stack } from 'react-bootstrap'
+import { Button, Container, FloatingLabel, Form, Stack } from 'react-bootstrap'
 
 const BLANK_USER = {
   'first': '',
