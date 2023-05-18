@@ -21,6 +21,12 @@ function Header (props) {
     </React.Fragment>
   )
 
+  const moreBtns = (
+    <React.Fragment>
+      <Nav.Link onClick={()=>navigate('/listings/new')}>Request an address</Nav.Link>
+    </React.Fragment>
+  )
+
   return (
     <Navbar
       expand='lg'
@@ -33,6 +39,7 @@ function Header (props) {
             <Nav>
               <Nav.Link onClick={()=>navigate('/')}>Home</Nav.Link>
               <Nav.Link onClick={()=>navigate('about')}>About</Nav.Link>
+              {!!user ? moreBtns : null}
             </Nav>
             <Nav className='ms-auto'>
               {!!user ? logoutBtns : loginBtns}
