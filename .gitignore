@@ -1,5 +1,6 @@
 test
 backend
+keys.js
 
 # firebase
 .firebase
