@@ -15,7 +15,6 @@ function Listings (props) {
       .catch(err => console.log(err))
   }, [])
 
-  console.log(listings)
   return (
     <Container>
       <Row>
