@@ -23,6 +23,7 @@ function Header (props) {
 
   const moreBtns = (
     <React.Fragment>
+      <Nav.Link onClick={()=>navigate('/listings')}>Listings</Nav.Link>
       <Nav.Link onClick={()=>navigate('/listings/new')}>Request an address</Nav.Link>
     </React.Fragment>
   )

@@ -7,7 +7,8 @@ import Home from './routes/Home'
 import RootTemplate from './components/RootTemplate'
 import About from './routes/About'
 import Account from './routes/account/Account'
-import Listing from './routes/listings/Listing'
+import ListingDetail from './routes/listings/ListingDetail'
+import Listings from './routes/listings/Listings'
 import LoginForm from './routes/account/LoginForm'
 import Logout from './routes/account/Logout'
 import NewListingForm from './routes/listings/NewListingForm'
@@ -58,7 +59,11 @@ const router = createBrowserRouter([
           },
           {
             path: ':id',
-            element: <Listing />
+            element: <ListingDetail />
+          },
+          {
+            path: '',
+            element: <Listings />
           }
         ]
       }

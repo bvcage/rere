@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, FloatingLabel, Form } from 'react-bootstrap'
+import { Button, Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
@@ -17,7 +17,8 @@ function NewListingForm (props) {
       addDoc(collection(DB, 'requests'), {
         'url': listingURL,
         'user_uid': user.uid,
-        'completed': false
+        'completed': false,
+        'created_TS': serverTimestamp()
       }).then(ref => {
         addDoc(collection(DB, 'users', user.uid, 'requests'), {
           'request_uid': ref.id,
@@ -34,21 +35,39 @@ function NewListingForm (props) {
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <h2>Request an Address Listing</h2>
-      <p>Enter URL below to request a listing be added to our database. Note that Re:RE currently supports only the following sites: Redfin</p>
-      <FloatingLabel
-        label='Listing URL'
-        >
-          <Form.Control
-            name='listingURL'
-            placeholder=' '
-            required
-            type='text'
-            value={listingURL}
-            onChange={e => setListingURL(e.target.value)}
-          />
-        </FloatingLabel>
-        <Button type='submit'>Submit request</Button>
+      <Container>
+        <Row>
+          <Col>
+            <h2>Request an Address Listing</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p>
+              Enter URL below to request a listing be added to our database.
+              <br />
+              Note that we currently support only the following sites: Redfin
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <FloatingLabel label='Listing URL'>
+              <Form.Control
+                name='listingURL'
+                placeholder=' '
+                required
+                type='text'
+                value={listingURL}
+                onChange={e => setListingURL(e.target.value)}
+                />
+            </FloatingLabel>
+          </Col>
+          <Col xs={12} sm={3} md={2}>
+            <Button type='submit' style={{height: '100%', width: '100%'}}>Submit</Button>
+          </Col>
+        </Row>
+      </Container>
     </Form>
   )
 }

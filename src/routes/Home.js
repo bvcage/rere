@@ -32,7 +32,7 @@ function Home (props) {
         <Carousel.Item style={{maxHeight: 600}}>
           <Image
             fluid
-            className="mx-auto d-block"
+            className="my-auto d-block"
             src={image.urls.full}
             alt={image.alt_description}
           />
