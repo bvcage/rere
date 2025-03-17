@@ -14,6 +14,7 @@ import Logout from './routes/account/Logout'
 import NewListingForm from './routes/listings/NewListingForm'
 import SignupForm from './routes/account/SignupForm'
 import UserProfile from './routes/account/UserProfile'
+import ResetPasswordForm from './routes/account/ResetPasswordForm'
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           {
             path: 'signup',
             element: <SignupForm />
+          },
+          {
+            path: 'reset_password',
+            element: <ResetPasswordForm />
           }
         ]
       },
