@@ -55,6 +55,7 @@ function LoginForm (props) {
           <Container fluid style={{textAlign: 'center'}}>
             <Button type='submit' style={{minWidth: '60%'}}>login</Button>
             <p>New user? <a href='./signup'>Sign up here</a>.</p>
+            <p>Forgot your password? <a href='./reset_password'>Reset it here</a>.</p>
           </Container>
         </Stack>
       </Form>
